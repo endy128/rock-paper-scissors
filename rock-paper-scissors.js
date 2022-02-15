@@ -20,29 +20,78 @@ function computerPlay() {
         // if "random" = 3, computerSelection = "Scissors"
         computerSelection = "Scissors";
     }
-
 // return computerselection
 return(computerSelection);
 }
 
-//console.log(computerPlay());
 
 function playRound(playerSelection, computerSelection) {
-    // your code here!
+    let result = "";
 
+    if (playerSelection == "Paper" && computerSelection == "Rock") {
+        result = "P"; // Player wins
+        return(result);
+    } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        result = "P"; // Player wins
+        return(result);
+    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        result = "P"; // Player wins
+        return(result);
+    } else if (playerSelection == computerSelection) {
+        result = "D"; // Draw
+        return(result);
+    } else {
+        result = "C"; // CPU Wins
+        return(result);
+    }
 }
 
 
-//Capitalises the first char of a string, set rest to lowercase & returns result
-// function capitalise(word) { 
-//     let firstLetter = word.charAt(0);
-//     let restOfWord = word.slice(1);
-//     return(firstLetter.toUpperCase() + restOfWord.toLowerCase());
-//   }
+// Capitalises the first char of a string, set rest to lowercase & returns result
+function capitaliseFirst(word) { 
+    let firstLetter = word.charAt(0);
+    let restOfWord = word.slice(1);
+    return(firstLetter.toUpperCase() + restOfWord.toLowerCase());
+  }
 
 
 
 
-const playerSelection = "Rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let playerWins = 0;
+    let computerWins = 0;
+    let numberOfDraws = 0;
+    let result = "";
+    let computerSelection = "";
+    let playerSelection = "";
+    let playerInput = "";
+
+    for (let i = 0; i < 5; i++) {
+
+        playerInput = capitaliseFirst(prompt("Enter your choice: "));
+        result = playRound(playerSelection = playerInput, computerSelection = computerPlay());
+
+        console.log("Round " + (i + 1));
+        console.log("Player: " + playerSelection);
+        console.log("CPU: " + computerSelection);
+
+
+        if (result == "P") {
+            playerWins++;
+            console.log("Player WINS!")
+        } else if (result == "C") {
+            computerWins++;
+            console.log("CPU WINS!")
+        } else {
+            numberOfDraws++;
+            console.log("It's a DRAW")
+        }
+
+
+     }
+     console.log("Player wins: " + playerWins);
+     console.log("CPU Wins: " + computerWins);
+     console.log("Number of Draws: " + numberOfDraws);
+}
+
+game();
