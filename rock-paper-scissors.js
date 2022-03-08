@@ -104,6 +104,19 @@ function tallyResult(result) {
         numberOfDraws++;
         score.textContent = `P1: ${playerWins} CPU: ${computerWins} Draws: ${numberOfDraws}`;
     }
+
+    if (playerWins > 4) {
+        score.textContent = `PLAYER 1 WINS!!!!`;
+        playerWins = 0;
+        computerWins = 0;
+        numberOfDraws = 0;
+    } else if (computerWins > 4) {
+        score.textContent = `CPU WINS!!!!`;
+        playerWins = 0;
+        computerWins = 0;
+        numberOfDraws = 0;
+    }
+
 }
 
 game();
